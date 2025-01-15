@@ -1,21 +1,31 @@
-def calculate_tax(income):
-    if income <= 250000:
-        return 0
-    elif income <= 500000:
-        return (income - 250000) * 0.05
-    elif income <= 1000000:
-        return (income - 500000) * 0.2 + 250000 * 0.05
-    else:
-        return (income - 1000000) * 0.3 + 500000 * 0.2 + 250000 * 0.05
+print("---------------------\nIncome Tax Calculator\n---------------------")
+gross_sal=int(input("Enter the total earned income:"))
+deduc=int(input("Enter the total deductions:"))
+tax_income=gross_sal-deduc
+print("\nTaxable Income: ",tax_income)
+print("\nTaxable Income : ",tax_income)
+if(tax_income<=300000):
+    base=0
+    rate=0
+elif(300000<tax_income<=700000):
+    exc_inc=tax_income-300000
+    base=0
+    rate=0.05
+elif(700000<tax_income<=1000000):
+    exc_inc=tax_income-700000
+    base=20000
+    rate=0.1
+elif(1000000<tax_income<=1200000):
+    exc_inc=tax_income-1000000
+    base=50000
+    rate=0.15
+elif(1200000<tax_income<=1500000):
+    exc_inc=tax_income-1200000
+    base=80000
+    rate=0.2
+elif(1500000<tax_income):
+    exc_inc=tax_income-1500000
+    base=140000
+    rate=0.3
 
-def main():
-    print("Income Tax Calculator\n")
-    try:
-        income = float(input("Please enter your annual income in INR: "))
-        tax_amount = calculate_tax(income)
-        print(f"\nYour total tax liability is ₹{tax_amount:.2f}.")
-    except ValueError:
-        print("Error: Invalid input. Enter a numeric value for income.")
-
-if __name__ == "__main__":
-    main()
+income_tax=base+(exc_inc*rate)
